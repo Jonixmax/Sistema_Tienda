@@ -79,7 +79,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.gestion = new System.Windows.Forms.TabControl();
+            this.S = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.chartStock = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -89,7 +89,7 @@
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).BeginInit();
-            this.gestion.SuspendLayout();
+            this.S.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartStock)).BeginInit();
             this.SuspendLayout();
@@ -112,7 +112,7 @@
             this.Venta.Location = new System.Drawing.Point(4, 25);
             this.Venta.Name = "Venta";
             this.Venta.Padding = new System.Windows.Forms.Padding(3);
-            this.Venta.Size = new System.Drawing.Size(790, 395);
+            this.Venta.Size = new System.Drawing.Size(857, 438);
             this.Venta.TabIndex = 2;
             this.Venta.Text = "Venta";
             // 
@@ -160,7 +160,7 @@
             this.dataGridViewVentas.Name = "dataGridViewVentas";
             this.dataGridViewVentas.RowHeadersWidth = 51;
             this.dataGridViewVentas.RowTemplate.Height = 24;
-            this.dataGridViewVentas.Size = new System.Drawing.Size(409, 330);
+            this.dataGridViewVentas.Size = new System.Drawing.Size(460, 374);
             this.dataGridViewVentas.TabIndex = 7;
             // 
             // ven
@@ -238,7 +238,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(790, 395);
+            this.tabPage2.Size = new System.Drawing.Size(857, 438);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Cliente";
             // 
@@ -313,7 +313,7 @@
             this.listBoxClientes.ItemHeight = 16;
             this.listBoxClientes.Location = new System.Drawing.Point(305, 48);
             this.listBoxClientes.Name = "listBoxClientes";
-            this.listBoxClientes.Size = new System.Drawing.Size(479, 324);
+            this.listBoxClientes.Size = new System.Drawing.Size(546, 324);
             this.listBoxClientes.TabIndex = 9;
             // 
             // txtClienteDireccion
@@ -356,7 +356,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(790, 395);
+            this.tabPage1.Size = new System.Drawing.Size(857, 438);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Producto";
             // 
@@ -388,7 +388,7 @@
             this.dataGridViewProductos.Name = "dataGridViewProductos";
             this.dataGridViewProductos.RowHeadersWidth = 51;
             this.dataGridViewProductos.RowTemplate.Height = 24;
-            this.dataGridViewProductos.Size = new System.Drawing.Size(787, 217);
+            this.dataGridViewProductos.Size = new System.Drawing.Size(848, 257);
             this.dataGridViewProductos.TabIndex = 16;
             // 
             // Column1
@@ -488,7 +488,7 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(574, 32);
+            this.button1.Location = new System.Drawing.Point(599, 32);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(174, 48);
             this.button1.TabIndex = 8;
@@ -546,19 +546,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Precio";
             // 
-            // gestion
+            // S
             // 
-            this.gestion.AccessibleName = "";
-            this.gestion.Controls.Add(this.tabPage1);
-            this.gestion.Controls.Add(this.tabPage2);
-            this.gestion.Controls.Add(this.Venta);
-            this.gestion.Controls.Add(this.tabPage3);
-            this.gestion.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.gestion.Location = new System.Drawing.Point(1, 2);
-            this.gestion.Name = "gestion";
-            this.gestion.SelectedIndex = 0;
-            this.gestion.Size = new System.Drawing.Size(798, 424);
-            this.gestion.TabIndex = 4;
+            this.S.AccessibleName = "";
+            this.S.Controls.Add(this.tabPage1);
+            this.S.Controls.Add(this.tabPage2);
+            this.S.Controls.Add(this.Venta);
+            this.S.Controls.Add(this.tabPage3);
+            this.S.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.S.Location = new System.Drawing.Point(1, 2);
+            this.S.Name = "S";
+            this.S.SelectedIndex = 0;
+            this.S.Size = new System.Drawing.Size(865, 467);
+            this.S.TabIndex = 4;
             // 
             // tabPage3
             // 
@@ -566,7 +566,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(790, 395);
+            this.tabPage3.Size = new System.Drawing.Size(857, 438);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "Existencias por Categoria";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -584,7 +584,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartStock.Series.Add(series1);
-            this.chartStock.Size = new System.Drawing.Size(702, 317);
+            this.chartStock.Size = new System.Drawing.Size(755, 350);
             this.chartStock.TabIndex = 0;
             this.chartStock.Text = "chartStock";
             // 
@@ -593,8 +593,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.gestion);
+            this.ClientSize = new System.Drawing.Size(878, 471);
+            this.Controls.Add(this.S);
             this.Cursor = System.Windows.Forms.Cursors.No;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -609,7 +609,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).EndInit();
-            this.gestion.ResumeLayout(false);
+            this.S.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartStock)).EndInit();
             this.ResumeLayout(false);
@@ -624,7 +624,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabControl gestion;
+        private System.Windows.Forms.TabControl S;
         private System.Windows.Forms.TextBox Nombre;
         private System.Windows.Forms.TextBox PRECIO;
         private System.Windows.Forms.TextBox txtClienteDireccion;
