@@ -33,10 +33,10 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Venta = new System.Windows.Forms.TabPage();
+            this.comboBoxProductos = new System.Windows.Forms.ComboBox();
             this.EliminarVenta = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.numericUpDownCantidad = new System.Windows.Forms.NumericUpDown();
-            this.listBoxProductos = new System.Windows.Forms.ListBox();
             this.dataGridViewVentas = new System.Windows.Forms.DataGridView();
             this.ven = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -97,10 +97,10 @@
             // Venta
             // 
             this.Venta.BackColor = System.Drawing.Color.Silver;
+            this.Venta.Controls.Add(this.comboBoxProductos);
             this.Venta.Controls.Add(this.EliminarVenta);
             this.Venta.Controls.Add(this.label15);
             this.Venta.Controls.Add(this.numericUpDownCantidad);
-            this.Venta.Controls.Add(this.listBoxProductos);
             this.Venta.Controls.Add(this.dataGridViewVentas);
             this.Venta.Controls.Add(this.ven);
             this.Venta.Controls.Add(this.label12);
@@ -115,6 +115,14 @@
             this.Venta.Size = new System.Drawing.Size(790, 395);
             this.Venta.TabIndex = 2;
             this.Venta.Text = "Venta";
+            // 
+            // comboBoxProductos
+            // 
+            this.comboBoxProductos.FormattingEnabled = true;
+            this.comboBoxProductos.Location = new System.Drawing.Point(26, 128);
+            this.comboBoxProductos.Name = "comboBoxProductos";
+            this.comboBoxProductos.Size = new System.Drawing.Size(317, 24);
+            this.comboBoxProductos.TabIndex = 12;
             // 
             // EliminarVenta
             // 
@@ -144,16 +152,6 @@
             this.numericUpDownCantidad.Name = "numericUpDownCantidad";
             this.numericUpDownCantidad.Size = new System.Drawing.Size(317, 22);
             this.numericUpDownCantidad.TabIndex = 9;
-            // 
-            // listBoxProductos
-            // 
-            this.listBoxProductos.Cursor = System.Windows.Forms.Cursors.Help;
-            this.listBoxProductos.FormattingEnabled = true;
-            this.listBoxProductos.ItemHeight = 16;
-            this.listBoxProductos.Location = new System.Drawing.Point(26, 128);
-            this.listBoxProductos.Name = "listBoxProductos";
-            this.listBoxProductos.Size = new System.Drawing.Size(317, 36);
-            this.listBoxProductos.TabIndex = 8;
             // 
             // dataGridViewVentas
             // 
@@ -655,7 +653,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown numericUpDownCantidad;
-        private System.Windows.Forms.ListBox listBoxProductos;
         private System.Windows.Forms.ComboBox catego;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -671,6 +668,7 @@
         private System.Windows.Forms.Button EliminarVenta;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartStock;
+        private System.Windows.Forms.ComboBox comboBoxProductos;
     }
 }
 

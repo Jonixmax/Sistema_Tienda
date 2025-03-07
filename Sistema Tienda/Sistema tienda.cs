@@ -185,7 +185,7 @@ namespace Sistema_Tienda
                     MessageBox.Show("Seleccione un cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (listBoxProductos.SelectedItem == null)
+                if (comboBoxProductos.SelectedItem == null)
                 {
                     MessageBox.Show("Seleccione un producto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -200,7 +200,7 @@ namespace Sistema_Tienda
 
                 // Obtener cliente y producto seleccionados
                 Cliente clienteSeleccionado = (Cliente)comboBoxClientes.SelectedItem;
-                Producto productoSeleccionado = (Producto)listBoxProductos.SelectedItem;
+                Producto productoSeleccionado = (Producto)comboBoxProductos.SelectedItem;
 
                 // Verificar stock suficiente
                 if (productoSeleccionado.Cantidad < cantidad)
@@ -258,7 +258,7 @@ namespace Sistema_Tienda
 
         private void CargarProductosEnListBox()
         {
-            listBoxProductos.Items.Clear(); // Limpiar antes de agregar
+            comboBoxProductos.Items.Clear(); // Limpiar antes de agregar
 
             for (int i = 0; i < 5; i++) // 5 categorías
             {
@@ -266,12 +266,12 @@ namespace Sistema_Tienda
                 {
                     if (stockProductos[i, j] != null) // Si hay un producto en esa posicion
                     {
-                        listBoxProductos.Items.Add(stockProductos[i, j]); // Agregar el objeto Producto
+                        comboBoxProductos.Items.Add(stockProductos[i, j]); // Agregar el objeto Producto
                     }
                 }
             }
 
-            listBoxProductos.DisplayMember = "NCP"; // Mostrar nombre , stock y precio
+            comboBoxProductos.DisplayMember = "NCP"; // Mostrar nombre , stock y precio
 
         }
 
