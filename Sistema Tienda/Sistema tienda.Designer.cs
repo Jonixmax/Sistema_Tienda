@@ -384,11 +384,11 @@
             this.Column8,
             this.Column9,
             this.Column10});
-            this.dataGridViewProductos.Location = new System.Drawing.Point(3, 175);
+            this.dataGridViewProductos.Location = new System.Drawing.Point(3, 194);
             this.dataGridViewProductos.Name = "dataGridViewProductos";
             this.dataGridViewProductos.RowHeadersWidth = 51;
             this.dataGridViewProductos.RowTemplate.Height = 24;
-            this.dataGridViewProductos.Size = new System.Drawing.Size(848, 257);
+            this.dataGridViewProductos.Size = new System.Drawing.Size(848, 199);
             this.dataGridViewProductos.TabIndex = 16;
             // 
             // Column1
