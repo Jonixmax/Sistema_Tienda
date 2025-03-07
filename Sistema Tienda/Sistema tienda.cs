@@ -12,18 +12,20 @@ namespace Sistema_Tienda
 {
     public partial class Form1 : Form
     {
+        private BindingList<Venta> listaVentas = new BindingList<Venta>();
         private List<Cliente> listaClientes = new List<Cliente>();
         private Producto[,] stockProductos = new Producto[5, 10];
-        private string[] categorias = { "Electrónica", "Ropa", "Hogar", "Juguetes", "Alimentos" };
+        private string[] categorias = { "Electrónica", "Ropa", "Hogar", "Alimentos", "Otros" };
         private Dictionary<int, Venta> ventas = new Dictionary<int, Venta>(); // Diccionario de ventas
         private int idVenta = 1; // Contador para ID de ventas
         public Form1()
         {
+            
             InitializeComponent();
             InicializarCategoria();
             ConfigurarDataGridView();
-         //   CargarClientesEnComboBox();
-          //  CargarProductosEnListBox();
+            dataGridViewVentas.DataSource = listaVentas;
+           
         }
         private void InicializarCategoria()
         {
@@ -43,20 +45,12 @@ namespace Sistema_Tienda
                 dataGridViewProductos.Rows[i].HeaderCell.Value = categorias[i];
             }
 
-            // Opciones de estilo (opcional)
-            dataGridViewProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+           
         }
-
-
-
-
-
 
         private void Agregarproducto(object sender, EventArgs e)
         {
-
-
-            try
+           try
             {
                 int id = int.Parse(ID.Text);
                 string nombre = Nombre.Text;
@@ -69,11 +63,11 @@ namespace Sistema_Tienda
 
                 // Buscar el primer espacio vacío en la fila correspondiente a la categoría
                 bool productoAgregado = false;
-                for (int j = 0; j < 10; j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if (stockProductos[indiceCategoria, j] == null)
+                    if (stockProductos[indiceCategoria, i] == null)
                     {
-                        stockProductos[indiceCategoria, j] = new Producto(id, nombre, categoria, precio, cantidad);
+                        stockProductos[indiceCategoria, i] = new Producto(id, nombre, categoria, precio, cantidad);
                         productoAgregado = true;
                         break;
                     }
@@ -165,7 +159,7 @@ namespace Sistema_Tienda
             listBoxClientes.Items.Clear();
             foreach (var cliente in listaClientes)
             {
-                listBoxClientes.Items.Add($"ID: {cliente.ID} -{cliente.Nombre}-{cliente.Telefono} -{cliente.Direccion}");
+                listBoxClientes.Items.Add($"ID: {cliente.ID} -Nombre: {cliente.Nombre}-Telefono: {cliente.Telefono} -Direccion: {cliente.Direccion}");
             }
         }
 
@@ -206,7 +200,6 @@ namespace Sistema_Tienda
                 Cliente clienteSeleccionado = (Cliente)comboBoxClientes.SelectedItem;
                 Producto productoSeleccionado = (Producto)listBoxProductos.SelectedItem;
 
-
                 // Verificar stock suficiente
                 if (productoSeleccionado.Cantidad < cantidad)
                 {
@@ -224,6 +217,8 @@ namespace Sistema_Tienda
 
                 // Actualizar DataGridView de ventas
                 ActualizarListaVentas();
+           
+                CargarProductosEnListBox();
 
                 // Incrementar ID de venta
                 idVenta++;
@@ -234,6 +229,7 @@ namespace Sistema_Tienda
             {
                 MessageBox.Show($"Error: {ex.Message}");
             }
+
         }
 
 
@@ -243,8 +239,8 @@ namespace Sistema_Tienda
             dataGridViewVentas.DataSource = ventas.Values.Select(v => new
             {
                 ID = v.ID,
-                Cliente = v.Cliente.Nombre,  // Solo el nombre del cliente
-                Producto = v.Producto.Nombre, // Solo el nombre del producto
+                Cliente = v.Cliente.Nombre,  
+                Producto = v.Producto.Nombre, 
                 Cantidad = v.Cantidad,
                 Total = v.Total
             }).ToList();
@@ -266,17 +262,57 @@ namespace Sistema_Tienda
             {
                 for (int j = 0; j < 10; j++) // 10 productos por categoría
                 {
-                    if (stockProductos[i, j] != null) // Si hay un producto en esa posición
+                    if (stockProductos[i, j] != null) // Si hay un producto en esa posicion
                     {
                         listBoxProductos.Items.Add(stockProductos[i, j]); // Agregar el objeto Producto
                     }
                 }
             }
 
-            listBoxProductos.DisplayMember = "Nombre"; // Mostrar solo el nombre
+            listBoxProductos.DisplayMember = "NCP"; // Mostrar nombre , stock y precio
+
         }
 
+        private void Eliminar(object sender, EventArgs e)
 
+        {
+
+
+            if (dataGridViewVentas.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, selecciona una venta para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Obtener el índice de la fila seleccionada
+            int indiceFila = dataGridViewVentas.SelectedRows[0].Index;
+            int idVenta = Convert.ToInt32(dataGridViewVentas.Rows[indiceFila].Cells[0].Value);
+
+            // Verificar si la venta existe en el diccionario
+            if (ventas.ContainsKey(idVenta))
+            {
+                // Obtener la venta y devolver productos al stock
+                Venta venta = ventas[idVenta];
+                venta.Producto.Cantidad += venta.Cantidad;
+
+                // Eliminar la venta del diccionario y la lista
+                ventas.Remove(idVenta);
+                listaVentas.Remove(venta);
+
+                // Actualizar la interfaz
+                ActualizarListaProductos();
+                ActualizarListaVentas();
+                CargarProductosEnListBox();
+                MessageBox.Show("Venta eliminada y productos devueltos al stock.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("No se encontró la venta en el sistema.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+        }
     }
 }
 

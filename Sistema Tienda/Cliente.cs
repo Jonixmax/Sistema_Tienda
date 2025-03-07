@@ -8,18 +8,19 @@ namespace Sistema_Tienda
 {
     internal class Cliente
     {
-        public int ID { get; set; }
-        public string Nombre { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
+        // Propiedades de la clase Cliente
+        public int ID { get; set; } 
+        public string Nombre { get; set; } 
+        public string Direccion { get; set; } 
+        public string Telefono { get; set; } 
 
+        // Constructor de la clase Cliente
         public Cliente(int id, string nombre, string direccion, string telefono)
         {
-            ID = id;
-            Nombre = nombre;
-            Direccion = direccion;
+            ID = id; 
+            Nombre = nombre; 
+            Direccion = direccion; 
             Telefono = telefono;
         }
     }
 }
-

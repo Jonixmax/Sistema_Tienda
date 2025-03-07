@@ -8,25 +8,21 @@ namespace Sistema_Tienda
 {
     internal class Venta
     {
+        // Propiedades de la clase Venta
+        public int ID { get; set; } 
+        public Cliente Cliente { get; set; } 
+        public Producto Producto { get; set; } 
+        public int Cantidad { get; set; } 
+        public decimal Total { get; set; } 
 
-        public int ID { get; set; }
-        public Cliente Cliente { get; set; }
-        public Producto Producto { get; set; }
-        public int Cantidad { get; set; }
-        public decimal Total { get; set; }
-
+        // Constructor de la clase Venta
         public Venta(int id, Cliente cliente, Producto producto, int cantidad, decimal total)
         {
-            ID = id;
-            Cliente = cliente;
-            Producto = producto;
-            Cantidad = cantidad;
-            Total = total;
+            ID = id; 
+            Cliente = cliente; 
+            Producto = producto; 
+            Cantidad = cantidad; 
+            Total = total; 
         }
-
-
     }
-
-
 }
-
