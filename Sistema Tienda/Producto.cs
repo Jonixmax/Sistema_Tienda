@@ -13,22 +13,22 @@ namespace Sistema_Tienda
         public string Nombre { get; set; } 
         public string Categoria { get; set; } 
         public decimal Precio { get; set; } 
-        public int Cantidad { get; set; } 
+        public int Stock { get; set; } 
 
         // Constructor de la clase Producto
-        public Producto(int id, string nombre, string categoria, decimal precio, int cantidad)
+        public Producto(int id, string nombre, string categoria, decimal precio, int stock)
         {
             ID = id;
             Nombre = nombre; 
             Categoria = categoria; 
             Precio = precio; 
-            Cantidad = cantidad; 
+            Stock = stock; 
         }
 
         // Propiedad que retorna una cadena con el nombre del producto, la cantidad y el precio
         public string NCP
         {
-            get { return $"{Nombre} - Stock: {Cantidad} - Precio: ${Precio}"; }
+            get { return $"{Nombre} - Stock: {Stock} - Precio: ${Precio}"; }
         }
     }
 }

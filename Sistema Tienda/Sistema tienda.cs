@@ -203,7 +203,7 @@ namespace Sistema_Tienda
                 Producto productoSeleccionado = (Producto)comboBoxProductos.SelectedItem;
 
                 // Verificar stock suficiente
-                if (productoSeleccionado.Cantidad < cantidad)
+                if (productoSeleccionado.Stock < cantidad)
                 {
                     MessageBox.Show("No hay suficiente stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -215,7 +215,7 @@ namespace Sistema_Tienda
                 ventas.Add(idVenta, nuevaVenta);
 
                 // Actualizar stock del producto
-                productoSeleccionado.Cantidad -= cantidad;
+                productoSeleccionado.Stock -= cantidad;
 
                 
                 ActualizarListaVentas();
@@ -295,7 +295,7 @@ namespace Sistema_Tienda
             {
                 // Obtener la venta y devolver productos al stock
                 Venta venta = ventas[idVenta];
-                venta.Producto.Cantidad += venta.Cantidad;
+                venta.Producto.Stock += venta.Cantidad;
 
                 // Eliminar la venta del diccionario y la lista
                 ventas.Remove(idVenta);
@@ -339,7 +339,7 @@ namespace Sistema_Tienda
                 {
                     if (stockProductos[i, j] != null) 
                     {
-                        totalCategoria += stockProductos[i, j].Cantidad; 
+                        totalCategoria += stockProductos[i, j].Stock; 
                     }
                 }
 
