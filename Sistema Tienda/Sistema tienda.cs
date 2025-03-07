@@ -100,13 +100,13 @@ namespace Sistema_Tienda
             dataGridViewProductos.Rows.Clear();
             ConfigurarDataGridView(); // Asegurar que las categorías sigan en su lugar
 
-            for (int i = 0; i < 5; i++) // Recorrer filas (categorías)
+            for (int i = 0; i < 5; i++) 
             {
-                for (int j = 0; j < 10; j++) // Recorrer columnas (productos)
+                for (int j = 0; j < 10; j++) 
                 {
                     if (stockProductos[i, j] != null)
                     {
-                        dataGridViewProductos.Rows[i].Cells[j].Value = stockProductos[i, j].Nombre; // Mostrar solo el nombre del producto
+                        dataGridViewProductos.Rows[i].Cells[j].Value = stockProductos[i, j].Nombre; 
                     }
                 }
             }
