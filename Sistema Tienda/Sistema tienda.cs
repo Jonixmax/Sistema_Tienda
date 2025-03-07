@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Sistema_Tienda
 {
@@ -75,6 +76,7 @@ namespace Sistema_Tienda
 
                 if (productoAgregado)
                 {
+                    CargarGraficoStock();
                     ActualizarListaProductos(); // Refrescar el DataGridView
                     LimpiarCampos();
                     MessageBox.Show("Producto registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -217,7 +219,7 @@ namespace Sistema_Tienda
 
                 // Actualizar DataGridView de ventas
                 ActualizarListaVentas();
-           
+                CargarGraficoStock();
                 CargarProductosEnListBox();
 
                 // Incrementar ID de venta
@@ -303,6 +305,7 @@ namespace Sistema_Tienda
                 ActualizarListaProductos();
                 ActualizarListaVentas();
                 CargarProductosEnListBox();
+                CargarGraficoStock();
                 MessageBox.Show("Venta eliminada y productos devueltos al stock.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -313,6 +316,35 @@ namespace Sistema_Tienda
 
 
         }
+
+
+        private void CargarGraficoStock()
+        {
+            chartStock.Series.Clear(); // Limpiar datos previos
+
+            Series serie = new Series("Existencias Por categoria");
+            serie.ChartType = SeriesChartType.Column; // Tipo de gráfico (barras)
+
+            string[] categorias = { "Electrónica", "Ropa", "Hogar", "Alimentos", "Otros" };
+
+            // Recorrer la matriz y sumar los productos en cada categoría
+            for (int i = 0; i < 5; i++)
+            {
+                int totalCategoria = 0;
+                for (int j = 0; j < 10; j++)
+                {
+                    if (stockProductos[i, j] != null) // Si hay producto
+                    {
+                        totalCategoria += stockProductos[i, j].Cantidad;
+                    }
+                }
+                serie.Points.AddXY(categorias[i], totalCategoria);
+            }
+
+            chartStock.Series.Add(serie);
+        }
+
+      
     }
 }
 

@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Venta = new System.Windows.Forms.TabPage();
             this.EliminarVenta = new System.Windows.Forms.Button();
@@ -77,6 +80,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gestion = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.chartStock = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.Venta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCantidad)).BeginInit();
@@ -85,6 +90,8 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).BeginInit();
             this.gestion.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartStock)).BeginInit();
             this.SuspendLayout();
             // 
             // Venta
@@ -151,11 +158,11 @@
             // dataGridViewVentas
             // 
             this.dataGridViewVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewVentas.Location = new System.Drawing.Point(388, 65);
+            this.dataGridViewVentas.Location = new System.Drawing.Point(361, 37);
             this.dataGridViewVentas.Name = "dataGridViewVentas";
             this.dataGridViewVentas.RowHeadersWidth = 51;
             this.dataGridViewVentas.RowTemplate.Height = 24;
-            this.dataGridViewVentas.Size = new System.Drawing.Size(379, 290);
+            this.dataGridViewVentas.Size = new System.Drawing.Size(409, 330);
             this.dataGridViewVentas.TabIndex = 7;
             // 
             // ven
@@ -174,7 +181,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(490, 37);
+            this.label12.Location = new System.Drawing.Point(497, 12);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(156, 20);
             this.label12.TabIndex = 4;
@@ -306,9 +313,9 @@
             // 
             this.listBoxClientes.FormattingEnabled = true;
             this.listBoxClientes.ItemHeight = 16;
-            this.listBoxClientes.Location = new System.Drawing.Point(304, 63);
+            this.listBoxClientes.Location = new System.Drawing.Point(305, 48);
             this.listBoxClientes.Name = "listBoxClientes";
-            this.listBoxClientes.Size = new System.Drawing.Size(479, 292);
+            this.listBoxClientes.Size = new System.Drawing.Size(479, 324);
             this.listBoxClientes.TabIndex = 9;
             // 
             // txtClienteDireccion
@@ -383,7 +390,7 @@
             this.dataGridViewProductos.Name = "dataGridViewProductos";
             this.dataGridViewProductos.RowHeadersWidth = 51;
             this.dataGridViewProductos.RowTemplate.Height = 24;
-            this.dataGridViewProductos.Size = new System.Drawing.Size(784, 217);
+            this.dataGridViewProductos.Size = new System.Drawing.Size(787, 217);
             this.dataGridViewProductos.TabIndex = 16;
             // 
             // Column1
@@ -547,12 +554,41 @@
             this.gestion.Controls.Add(this.tabPage1);
             this.gestion.Controls.Add(this.tabPage2);
             this.gestion.Controls.Add(this.Venta);
+            this.gestion.Controls.Add(this.tabPage3);
             this.gestion.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.gestion.Location = new System.Drawing.Point(1, 2);
             this.gestion.Name = "gestion";
             this.gestion.SelectedIndex = 0;
             this.gestion.Size = new System.Drawing.Size(798, 424);
             this.gestion.TabIndex = 4;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.chartStock);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(790, 395);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "Existencias por Categoria";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // chartStock
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartStock.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartStock.Legends.Add(legend1);
+            this.chartStock.Location = new System.Drawing.Point(38, 46);
+            this.chartStock.Name = "chartStock";
+            this.chartStock.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartStock.Series.Add(series1);
+            this.chartStock.Size = new System.Drawing.Size(702, 317);
+            this.chartStock.TabIndex = 0;
+            this.chartStock.Text = "chartStock";
             // 
             // Form1
             // 
@@ -576,6 +612,8 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).EndInit();
             this.gestion.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartStock)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -631,6 +669,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.Button EliminarVenta;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartStock;
     }
 }
 
