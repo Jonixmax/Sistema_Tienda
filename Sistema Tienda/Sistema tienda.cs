@@ -17,8 +17,8 @@ namespace Sistema_Tienda
         private List<Cliente> listaClientes = new List<Cliente>();
         private Producto[,] stockProductos = new Producto[5, 10];
         private string[] categorias = { "Electrónica", "Ropa", "Hogar", "Alimentos", "Otros" };
-        private Dictionary<int, Venta> ventas = new Dictionary<int, Venta>(); // Diccionario de ventas
-        private int idVenta = 1; // Contador para ID de ventas
+        private Dictionary<int, Venta> ventas = new Dictionary<int, Venta>(); 
+        private int idVenta = 1; 
         public Form1()
         {
             
@@ -37,8 +37,8 @@ namespace Sistema_Tienda
         // Configurar el DataGridView para que tenga 5 filas y 10 columnas
         private void ConfigurarDataGridView()
         {
-            dataGridViewProductos.ColumnCount = 10; // 10 columnas para productos
-            dataGridViewProductos.RowCount = 5;     // 5 filas para categorías
+            dataGridViewProductos.ColumnCount = 10; 
+            dataGridViewProductos.RowCount = 5;     
 
             // Asignar los nombres de las categorías a las filas
             for (int i = 0; i < 5; i++)
@@ -76,11 +76,11 @@ namespace Sistema_Tienda
 
                 if (productoAgregado)
                 {
-                    CargarGraficoStock();
-                    ActualizarListaProductos(); // Refrescar el DataGridView
+                    StockGraficos();
+                    ActualizarListaProductos(); 
                     LimpiarCampos();
                     MessageBox.Show("Producto registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CargarProductosEnListBox(); // Actualizar ListBox de productos
+                    CargarProductoListBox(); 
                 }
                 else
                 {
@@ -145,7 +145,7 @@ namespace Sistema_Tienda
                 // Actualizar la visualización
                 ActualizarListaClientes();
                 LimpiarCamposCliente();
-                CargarClientesEnComboBox();
+                CargarClientesComboBox();
                 MessageBox.Show("Cliente registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -217,10 +217,10 @@ namespace Sistema_Tienda
                 // Actualizar stock del producto
                 productoSeleccionado.Cantidad -= cantidad;
 
-                // Actualizar DataGridView de ventas
+                
                 ActualizarListaVentas();
-                CargarGraficoStock();
-                CargarProductosEnListBox();
+                StockGraficos();
+                CargarProductoListBox();
 
                 // Incrementar ID de venta
                 idVenta++;
@@ -249,24 +249,24 @@ namespace Sistema_Tienda
         }
 
         // Método para cargar clientes en el ComboBox
-        private void CargarClientesEnComboBox()
+        private void CargarClientesComboBox()
         {
             comboBoxClientes.DataSource = null;
             comboBoxClientes.DataSource = listaClientes;
             comboBoxClientes.DisplayMember = "Nombre";
         }
 
-        private void CargarProductosEnListBox()
+        private void CargarProductoListBox()
         {
-            comboBoxProductos.Items.Clear(); // Limpiar antes de agregar
+            comboBoxProductos.Items.Clear(); 
 
             for (int i = 0; i < 5; i++) // 5 categorías
             {
                 for (int j = 0; j < 10; j++) // 10 productos por categoría
                 {
-                    if (stockProductos[i, j] != null) // Si hay un producto en esa posicion
+                    if (stockProductos[i, j] != null) 
                     {
-                        comboBoxProductos.Items.Add(stockProductos[i, j]); // Agregar el objeto Producto
+                        comboBoxProductos.Items.Add(stockProductos[i, j]); 
                     }
                 }
             }
@@ -304,8 +304,8 @@ namespace Sistema_Tienda
                 // Actualizar la interfaz
                 ActualizarListaProductos();
                 ActualizarListaVentas();
-                CargarProductosEnListBox();
-                CargarGraficoStock();
+                CargarProductoListBox();
+                StockGraficos();
                 MessageBox.Show("Venta eliminada y productos devueltos al stock.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -318,30 +318,38 @@ namespace Sistema_Tienda
         }
 
 
-        private void CargarGraficoStock()
+        private void StockGraficos()
         {
-            chartStock.Series.Clear(); // Limpiar datos previos
+            chartStock.Series.Clear(); 
 
-            Series serie = new Series("Existencias Por categoria");
-            serie.ChartType = SeriesChartType.Column; // Tipo de gráfico (barras)
+            Series serie = new Series("Stock Disponible")
+            {
+                ChartType = SeriesChartType.Column, 
+                IsValueShownAsLabel = true 
+            };
 
             string[] categorias = { "Electrónica", "Ropa", "Hogar", "Alimentos", "Otros" };
 
-            // Recorrer la matriz y sumar los productos en cada categoría
+            // Recorrer la matriz y calcular el stock total por categoría
             for (int i = 0; i < 5; i++)
             {
                 int totalCategoria = 0;
+
                 for (int j = 0; j < 10; j++)
                 {
-                    if (stockProductos[i, j] != null) // Si hay producto
+                    if (stockProductos[i, j] != null) 
                     {
-                        totalCategoria += stockProductos[i, j].Cantidad;
+                        totalCategoria += stockProductos[i, j].Cantidad; 
                     }
                 }
+
+                
                 serie.Points.AddXY(categorias[i], totalCategoria);
             }
 
-            chartStock.Series.Add(serie);
+            chartStock.Series.Add(serie); 
+            chartStock.ChartAreas[0].RecalculateAxesScale();
+            chartStock.Invalidate(); 
         }
 
       
